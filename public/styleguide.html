@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Style Guide · Tended Transition</title>
+<meta name="description" content="Brand and design system for the ApexCare to Tended transition: colors, typography, logo, and usage." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --purple:#3B1F7E; --violet:#7C5CBF; --violet-soft:#A48CD4;
+    --navy:#1A1033; --gold:#C49A3A; --paper:#F5F3F0;
+    --surface:#FBFAF8; --paper-deep:#ECE8E2;
+    --ink-muted:#6A6280; --line:#E3DFEA;
+    --apex-blue:#2A70B8; --apex-teal:#007367; --apex-green:#96CA50; --apex-gray:#54565A;
+    --serif:"DM Serif Display",Georgia,serif;
+    --sans:"Inter",system-ui,sans-serif;
+    --wrap:72rem;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--navy);font-family:var(--sans);
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem);}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.08;letter-spacing:-.01em;}
+  a{color:var(--violet);}
+  .dot{color:var(--gold);}
+
+  /* Masthead */
+  .mast{background:var(--purple);color:var(--paper);padding:4.5rem 0 4rem;position:relative;overflow:hidden;}
+  .mast::after{content:"";position:absolute;inset:0;background:
+    radial-gradient(60rem 30rem at 85% -10%, rgba(164,140,212,.35), transparent 60%);pointer-events:none;}
+  .brandline{display:flex;align-items:center;gap:.6rem;font-family:var(--serif);
+    font-size:1.5rem;color:var(--paper);}
+  .brandline .tld{color:var(--gold);}
+  .mast h1{font-size:clamp(2.6rem,6vw,4.5rem);margin:1.6rem 0 .6rem;color:var(--paper);}
+  .mast p{max-width:46ch;color:#DED7EF;font-size:1.15rem;margin:0;}
+  .mast .eyebrow{font-family:var(--sans);font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;font-size:.72rem;color:var(--violet-soft);}
+
+  /* Sprout mark */
+  .sprout{width:1.15em;height:1.15em;flex:none;transform:translateY(.08em);}
+
+  /* Section rhythm */
+  section.block{padding:4.5rem 0;border-bottom:1px solid var(--line);}
+  .kicker{font-family:var(--sans);font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    font-size:.72rem;color:var(--gold);margin:0 0 .5rem;}
+  .block h2{font-size:clamp(1.9rem,4vw,2.7rem);margin:0 0 .5rem;}
+  .lede{color:var(--ink-muted);max-width:60ch;font-size:1.1rem;margin:0 0 2.2rem;}
+
+  /* Transition banner */
+  .flow{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;margin-top:1.5rem;}
+  .chip{border:1px solid var(--line);border-radius:.75rem;padding:1rem 1.4rem;background:var(--surface);}
+  .chip small{display:block;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    font-size:.62rem;color:var(--ink-muted);margin-bottom:.25rem;}
+  .chip b{font-family:var(--serif);font-weight:400;font-size:1.5rem;}
+  .chip.apex b{color:var(--apex-blue);font-family:"Montserrat",sans-serif;font-weight:700;letter-spacing:-.01em;}
+  .chip.tended b{color:var(--purple);}
+  .arrow{color:var(--gold);font-size:1.6rem;line-height:1;}
+
+  /* Color grid */
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1rem;}
+  .sw{border:1px solid var(--line);border-radius:.8rem;overflow:hidden;background:var(--surface);}
+  .sw .chipc{height:96px;}
+  .sw .meta{padding:.7rem .85rem .9rem;}
+  .sw .name{font-weight:600;font-size:.95rem;}
+  .sw .hex{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82rem;color:var(--ink-muted);
+    text-transform:uppercase;}
+  .sw .use{font-size:.8rem;color:var(--ink-muted);margin-top:.35rem;line-height:1.4;}
+
+  /* Type specimens */
+  .specimen{border:1px solid var(--line);border-radius:.9rem;background:var(--surface);
+    padding:1.6rem 1.8rem;margin-bottom:1.1rem;}
+  .specimen .label{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-muted);margin-bottom:.6rem;}
+  .type-display{font-family:var(--serif);font-size:3rem;line-height:1.05;color:var(--purple);margin:0;}
+  .type-h{font-family:var(--serif);font-size:1.9rem;margin:0;color:var(--navy);}
+  .type-body{font-size:1.05rem;max-width:62ch;margin:.2rem 0 0;}
+  .type-mont{font-family:"Montserrat",sans-serif;font-weight:700;font-size:1.5rem;color:var(--apex-blue);margin:0;}
+  .scale{color:var(--ink-muted);font-size:.8rem;font-family:ui-monospace,monospace;margin-top:.5rem;}
+
+  /* Components */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;}
+  @media(max-width:720px){.cols{grid-template-columns:1fr;}}
+  .panel{border:1px solid var(--line);border-radius:.9rem;background:var(--surface);padding:1.6rem 1.8rem;}
+  .panel h3{font-size:1.3rem;margin:0 0 1rem;}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;font-family:var(--sans);
+    border-radius:999px;padding:.7rem 1.3rem;text-decoration:none;font-size:.95rem;border:1.5px solid transparent;}
+  .btn-primary{background:var(--purple);color:var(--paper);}
+  .btn-gold{background:var(--gold);color:var(--navy);}
+  .btn-ghost{background:transparent;color:var(--purple);border-color:var(--line);}
+  .btn-row{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;}
+  ul.do{list-style:none;padding:0;margin:0;}
+  ul.do li{padding:.5rem 0 .5rem 1.7rem;position:relative;border-bottom:1px solid var(--line);}
+  ul.do li:last-child{border-bottom:0;}
+  ul.do li::before{position:absolute;left:0;top:.5rem;font-weight:700;}
+  ul.do li.y::before{content:"✓";color:var(--apex-teal);}
+  ul.do li.n::before{content:"✕";color:#B4462F;}
+
+  footer{padding:3rem 0;color:var(--ink-muted);font-size:.9rem;}
+  .note{background:var(--paper-deep);border-radius:.7rem;padding:.7rem 1rem;font-size:.85rem;
+    color:var(--navy);display:inline-block;}
+</style>
+</head>
+<body>
+
+<!-- Masthead -->
+<header class="mast">
+  <div class="wrap">
+    <div class="brandline">
+      <svg class="sprout" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M16 30 V15" stroke="#C49A3A" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M16 17 C16 11 11 8 6 8 C6 14 10 17 16 17 Z" fill="#3B1F7E"/>
+        <path d="M16 15 C16 9 21 6 26 6 C26 12 22 15 16 15 Z" fill="#7C5CBF"/>
+      </svg>
+      Tended<span class="tld">.</span>
+    </div>
+    <p class="eyebrow">Brand &amp; Design System</p>
+    <h1>Transition Style Guide</h1>
+    <p>The single reference for how the ApexCare to Tended transition looks and reads. Tended is the go-forward brand and leads every surface; ApexCare is honored as heritage.</p>
+  </div>
+</header>
+
+<!-- Overview -->
+<section class="block">
+  <div class="wrap">
+    <p class="kicker">The transition</p>
+    <h2>One community, two brands</h2>
+    <p class="lede">Northern California families have trusted <strong>ApexCare</strong> for in-home care since 1992. That care now continues under <strong>Tended</strong>, the in-home elder-care platform and holding company. The design job is continuity: keep the warmth, lead with the new identity.</p>
+    <div class="flow">
+      <div class="chip apex"><small>Heritage</small><b>ApexCare</b></div>
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="chip tended"><small>Go-forward</small><b>Tended<span class="dot">.</span></b></div>
+    </div>
+  </div>
+</section>
+
+<!-- Tended colors -->
+<section class="block">
+  <div class="wrap">
+    <p class="kicker">Color · Primary system</p>
+    <h2>Tended palette</h2>
+    <p class="lede">A committed purple identity on warm paper, with gold as the single warm accent (the wordmark dot, the sprout stem, calls to action). Violet carries links and secondary accents.</p>
+    <div class="swatches">
+      <div class="sw"><div class="chipc" style="background:#3B1F7E"></div><div class="meta"><div class="name">Deep Purple</div><div class="hex">#3B1F7E</div><div class="use">Primary. Hero &amp; section grounds, headers, app tile.</div></div></div>
+      <div class="sw"><div class="chipc" style="background:#7C5CBF"></div><div class="meta"><div class="name">Violet</div><div class="hex">#7C5CBF</div><div class="use">Accent. Links, secondary accents, right leaf.</div></div></div>
+      <div class="sw"><div class="chipc" style="background:#A48CD4"></div><div class="meta"><div class="name">Soft Violet</div><div class="hex">#A48CD4</div><div class="use">Light accent, dot on dark, decorative fills.</div></div></div>
+      <div class="sw"><div class="chipc" style="background:#1A1033"></div><div class="meta"><div class="name">Ink Navy</div><div class="hex">#1A1033</div><div class="use">Body text, wordmark on light.</div></div></div>
+      <div class="sw"><div class="chipc" style="background:#C49A3A"></div><div class="meta"><div class="name">Warm Gold</div><div class="hex">#C49A3A</div><div class="use">Accent only. Sprout stem, dots, CTA, highlights.</div></div></div>
+      <div class="sw"><div class="chipc" style="background:#F5F3F0;border-bottom:1px solid var(--line)"></div><div class="meta"><div class="name">Warm Paper</div><div class="hex">#F5F3F0</div><div class="use">Light background for documents and surfaces.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ApexCare heritage colors -->
+<section class="block">
+  <div class="wrap">
+    <p class="kicker">Color · Heritage reference</p>
+    <h2>ApexCare palette</h2>
+    <p class="lede">Extracted from apexcare.com. Reference only. Use these strictly where the design points back to ApexCare's past (a heritage note, a "from ApexCare" lockup during the transition window). Never mix them into Tended surfaces.</p>
+    <div class="swatches">
+      <div class="sw"><div class="chipc" style="background:#2A70B8"></div><div class="meta"><div class="name">ApexCare Blue</div><div class="hex">#2A70B8</div><div class="use">Legacy primary.</div></div></div>
+      <div class="sw"><div class="chipc" style="background:#007367"></div><div class="meta"><div class="name">ApexCare Teal</div><div class="hex">#007367</div><div class="use">Legacy secondary.</div></div></div>
+      <div class="sw"><div class="chipc" style="background:#96CA50"></div><div class="meta"><div class="name">ApexCare Green</div><div class="hex">#96CA50</div><div class="use">Legacy accent.</div></div></div>
+      <div class="sw"><div class="chipc" style="background:#54565A"></div><div class="meta"><div class="name">ApexCare Gray</div><div class="hex">#54565A</div><div class="use">Legacy text.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Typography -->
+<section class="block">
+  <div class="wrap">
+    <p class="kicker">Typography</p>
+    <h2>Type system</h2>
+    <p class="lede">DM Serif Display gives Tended its warmth and authority; Inter keeps the reading clean and modern. Montserrat is retained only inside ApexCare heritage contexts.</p>
+
+    <div class="specimen">
+      <div class="label">Display / Headings — DM Serif Display</div>
+      <p class="type-display">Care that continues<span class="dot">.</span></p>
+      <p class="scale">DM Serif Display · Regular · headings, hero, the wordmark</p>
+    </div>
+    <div class="specimen">
+      <div class="label">Subhead — DM Serif Display</div>
+      <p class="type-h">How we'll connect, discover, and deliver</p>
+    </div>
+    <div class="specimen">
+      <div class="label">Body / UI — Inter</div>
+      <p class="type-body">Northern California families have trusted this team for in-home care since 1992. That care continues, with the same people you know, now supported by Tended's platform and resources.</p>
+      <p class="scale">Inter · 400 body / 600 UI · measure ≤ 68ch</p>
+    </div>
+    <div class="specimen">
+      <div class="label">Heritage — Montserrat (ApexCare contexts only)</div>
+      <p class="type-mont">ApexCare</p>
+      <p class="scale">Montserrat · 700 · only where ApexCare is explicitly referenced</p>
+    </div>
+  </div>
+</section>
+
+<!-- Logo -->
+<section class="block">
+  <div class="wrap">
+    <p class="kicker">Logo</p>
+    <h2>The wordmark &amp; sprout</h2>
+    <p class="lede">The "Tended." wordmark pairs with a sprout mark: a gold stem with a deep-purple and a violet leaf, carrying the promise of care and growth. Below is a CSS/SVG stand-in; always ship the official master files from the SharePoint kit.</p>
+    <div class="cols">
+      <div class="panel">
+        <h3>Lockup on paper</h3>
+        <div class="brandline" style="color:var(--navy);font-size:2.2rem;">
+          <svg class="sprout" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M16 30 V15" stroke="#C49A3A" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M16 17 C16 11 11 8 6 8 C6 14 10 17 16 17 Z" fill="#3B1F7E"/>
+            <path d="M16 15 C16 9 21 6 26 6 C26 12 22 15 16 15 Z" fill="#7C5CBF"/>
+          </svg>
+          <span style="color:var(--navy)">Tended<span class="dot">.</span></span>
+        </div>
+      </div>
+      <div class="panel" style="background:var(--purple);border-color:var(--purple);">
+        <h3 style="color:var(--paper)">Reversed on purple</h3>
+        <div class="brandline" style="font-size:2.2rem;">
+          <svg class="sprout" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M16 30 V15" stroke="#C49A3A" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M16 17 C16 11 11 8 6 8 C6 14 10 17 16 17 Z" fill="#A48CD4"/>
+            <path d="M16 15 C16 9 21 6 26 6 C26 12 22 15 16 15 Z" fill="#7C5CBF"/>
+          </svg>
+          <span style="color:var(--paper)">Tended<span style="color:#A48CD4">.</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:1.2rem"><span class="note">Clear space ≥ sprout height · min lockup 120px wide, mark 24px · never recolor, stretch, or rebuild the mark.</span></p>
+  </div>
+</section>
+
+<!-- Components -->
+<section class="block">
+  <div class="wrap">
+    <p class="kicker">Components</p>
+    <h2>Buttons, links &amp; the dot motif</h2>
+    <div class="cols">
+      <div class="panel">
+        <h3>Buttons</h3>
+        <div class="btn-row" style="margin-bottom:.9rem">
+          <a class="btn btn-primary" href="#">Share your input</a>
+          <a class="btn btn-gold" href="#">Complete the survey</a>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn-ghost" href="#">Read the plan</a>
+          <a href="#" style="font-weight:600">A text link in violet</a>
+        </div>
+        <p class="scale" style="margin-top:1rem">Purple = primary action · Gold = the one warm CTA · Ghost = secondary. Gold appears once per view.</p>
+      </div>
+      <div class="panel">
+        <h3>The dot</h3>
+        <p style="margin:0 0 .8rem">The gold period in "Tended<span class="dot">.</span>" is the recurring motif: use it as a full stop after short statements and as list/timeline markers, echoing the sprout.</p>
+        <p style="font-family:var(--serif);font-size:1.6rem;color:var(--purple);margin:0">Your care continues<span class="dot">.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Usage -->
+<section class="block">
+  <div class="wrap">
+    <p class="kicker">Usage</p>
+    <h2>Do &amp; don't</h2>
+    <div class="cols">
+      <div class="panel">
+        <h3>Do</h3>
+        <ul class="do">
+          <li class="y">Lead with Tended purple and warm paper on every page.</li>
+          <li class="y">Reserve gold for one accent per view: dot, rule, or CTA.</li>
+          <li class="y">Reassure first: continuity of care before brand talk.</li>
+          <li class="y">Reference ApexCare warmly, in its own Montserrat, when naming the past.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Don't</h3>
+        <ul class="do">
+          <li class="n">Blend ApexCare blue/teal/green into Tended surfaces.</li>
+          <li class="n">Recolor, stretch, or rebuild the wordmark or sprout.</li>
+          <li class="n">Use gradient text, glass cards, or side-stripe accents.</li>
+          <li class="n">Write with em dashes; use commas, colons, or periods.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Tended Transition Style Guide · Tended values from the official Brand &amp; Logo Style Guide (Notion); ApexCare values extracted from apexcare.com. Logo shown is a stand-in; use official master files from the SharePoint kit.
+  </div>
+</footer>
+
+</body>
+</html>

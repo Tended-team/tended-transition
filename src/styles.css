@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+/* Tended design tokens. Default register is DARK (deep-purple/ink grounds, gold + violet
+   accents, warm-paper text). A LIGHT register is provided via [data-theme="light"] and
+   toggled in the header. Sourced from DESIGN.md. Tailwind v4 generates utilities from
+   these vars (bg-ink, text-gold, border-line, font-serif, …), so overriding the vars on
+   :root re-skins every utility. */
+@theme {
+  /* Grounds (dark, tinted toward brand purple) */
+  --color-ink: #150c2b; /* page background */
+  --color-surface-1: #1e1440;
+  --color-surface-2: #271a52;
+  --color-surface-3: #32235f;
+
+  /* Brand */
+  --color-purple: #3b1f7e;
+  --color-violet: #7c5cbf;
+  --color-violet-soft: #a48cd4;
+  --color-gold: #c49a3a;
+
+  /* Text on dark */
+  --color-paper: #f5f3f0;
+  --color-secondary: #c8c1dd;
+  --color-muted: #948bb4;
+
+  /* Lines */
+  --color-line: #362a5c;
+
+  /* Phase accents (mapped onto the brand family) */
+  --color-connect: #c49a3a; /* gold */
+  --color-discover: #9d7fd6; /* violet */
+  --color-deliver: #c98fb4; /* warm violet, distinct from discover */
+
+  /* Constant: text/ink that always sits on a light accent (gold buttons, badges). Not
+     re-skinned by theme, so contrast holds in both. */
+  --color-on-accent: #1a1033;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "DM Serif Display", Georgia, serif;
+}
+
+/* LIGHT register — warm paper grounds, ink-navy text, deepened accents for contrast. */
+:root[data-theme="light"] {
+  --color-ink: #f5f3f0;
+  --color-surface-1: #fbfaf8;
+  --color-surface-2: #f1ecf8;
+  --color-surface-3: #e8e1f2;
+
+  --color-paper: #1a1033; /* now the primary text color */
+  --color-secondary: #4a4363;
+  --color-muted: #6e6688;
+
+  --color-line: #e5e0ee;
+
+  --color-gold: #a97c28;
+  --color-violet: #6d51b0;
+  --color-connect: #a97c28;
+  --color-discover: #6d51b0;
+  --color-deliver: #a85c87;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Sticky-header anchor offset. */
+:target {
+  scroll-margin-top: 5rem;
+}
+
+/* Theme-scoped visibility helpers (used to swap logo variants without JS). */
+:root:not([data-theme="light"]) .only-light {
+  display: none;
+}
+:root[data-theme="light"] .only-dark {
+  display: none;
+}
+
+/* Scroll-reveal, opacity + small translate only. Layout props are never animated. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+}

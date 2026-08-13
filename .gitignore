@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Firebase
+.firebase/
+firebase-debug.log
+*-debug.log
+
+# Internal content source (kept locally as reference; not for the repo)
+content-source.html
+
+# Editor / OS
+.DS_Store
+*.local
+.vscode/*
+!.vscode/extensions.json
+.idea/
