@@ -26,6 +26,14 @@ npm install
 npm run dev
 ```
 
+## Edit visually in VS Code
+
+Open the folder in VS Code (recommended extensions in `.vscode/extensions.json`: Biome +
+Tailwind IntelliSense), run `npm run dev`, then ⌘⇧P → **"Simple Browser: Show"** and paste
+the dev URL. Split the editor so the live site sits beside the code: edits hot-reload on
+save. **Option/Alt-click** any element in the preview to jump straight to its source line in
+VS Code (via `click-to-react-component`, dev-only — stripped from production builds).
+
 ## Build & check
 
 ```bash
